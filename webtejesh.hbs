@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INSIDE BRAIN</title>
+    <style>
+      div.top {
+  width: 100%;
+  height: 500px;
+  background-color: rgb(245, 240, 240);
+  border: 2px solid rgb(243, 237, 237);
+  border-radius: 10px;
+  margin: 0px;
+}
+div.home {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  height: 30px;
+  width: 150px;
+  background-color: rgb(255, 30, 0);
+  color: black;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 10px;
+}
+div.home h1 {
+  font-size: small;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+div.home:hover {
+  -ms-transform: scale(1.12);
+  -webkit-transform: scale(1.12);
+  transform: scale(1.12);
+  border-radius: 10px;
+}
+.photo {
+  position: absolute;
+  top: 60px;
+  left: 200px;
+}
+.head {
+  font-size: 60px;
+  color: rgb(25, 0, 255);
+  position: absolute;
+  left: 60%;
+  top: 15%;
+}
+div.quiz {
+  width: 100%;
+  height: 600px;
+  background-color: rgb(51, 177, 40);
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  margin: 0px;
+}
+.question-box {
+  position: absolute;
+  left: 50px;
+  top: 600px;
+  width: 600px;
+  height: 100px;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  background-color: rgb(247, 242, 242);
+  justify-content: space-around;
+  align-items: center;
+  color: rgb(4, 0, 255);
+  display: flex;
+  font-size: small;
+}
+.answer-box {
+  position: absolute;
+  left: 50px;
+  top: 730px;
+  width: 600px;
+  height: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+.answer-box span {
+  width: 200px;
+  height: 50px;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  background-color: rgb(250, 249, 249);
+  justify-content: space-around;
+  align-items: center;
+  color: rgb(4, 0, 255);
+  display: flex;
+  font-size: small;
+}
+span label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+  font-weight: 600;
+  color: rgb(4, 0, 255);
+}
+span label:hover {
+  -ms-transform: scale(1.12);
+  -webkit-transform: scale(1.12);
+  transform: scale(1.12);
+  
+  border-radius: 10px;
+}
+input[type="radio"] {
+  position: relative;
+  display: none;
+}
+input[type="radio"]:checked ~ .option {
+  color: rgb(7, 7, 7);
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+.submit-button-box {
+  position: absolute;
+  left: 300px;
+  top: 900px;
+  width: 100px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.submit-button-box button {
+  width: 100px;
+  height: 30px;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  font-size: small;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  background-color: rgb(248, 244, 244);
+  color: rgb(4, 0, 255);
+}
+.submit-button-box button:hover {
+  -ms-transform: scale(1.12);
+  -webkit-transform: scale(1.12);
+  transform: scale(1.12);
+  
+}
+div.game-sum-box {
+  position: absolute;
+  right: 150px;
+  top: 650px;
+  width: 300px;
+  height: 100px;
+  background-color: rgb(248, 244, 244);
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  color: aliceblue;
+  align-items: center;
+  display: block;
+}
+div.game-sum-box h1 {
+  font-size: 20px;
+  color: rgb(4, 0, 255);
+  text-align: center;
+}
+.winings-box {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(48, 41, 41);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  -webkit-animation: fadeIn 1.2s ease-in-out;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+.winings-details {
+  height: 20rem;
+  width: 25rem;
+  background-color: rgb(255, 254, 254);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 25px;
+}
+
+.winings-details h1 {
+  font-size: 1.3rem;
+  height: 10px;
+  color: rgb(4, 0, 255);
+  text-align: center;
+}
+.continue-button {
+  height: 2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.continue-button button {
+  width: 10rem;
+  height: 2rem;
+  background: none;
+  outline: none;
+  border: 1px solid rgb(252, 242, 241);
+  color: rgb(4, 0, 255);
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.continue-button button:hover {
+  background-color: rgb(83, 82, 82);
+}
+.winings {
+  color: rgb(4, 0, 255);
+}
+.no-options-box {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(245, 241, 241);
+  background-color: rgb(231, 223, 223);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  -webkit-animation: fadeIn 1.2s ease-in-out;
+  animation: fadeIn 1.2s ease-in-out;
+}
+.no-option-box {
+  height: 320px;
+  width: 400px;
+  background-color: rgb(247, 243, 243);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 25px;
+}
+.no-option-box h1 {
+  font-size: 20px;
+  height: 10px;
+  color: rgb(4, 0, 255);
+  text-align: center;
+}
+div.rules {
+  background-color: rgb(241, 237, 237);
+  position: absolute;
+  top: 950px;
+  left: 100px;
+}
+.rule {
+  font-size: 15px;
+  height: 5px;
+  color: rgb(4, 0, 255);
+}
+
+    </style>
+  </head>
+
+  <body
+    class="body"
+    onload="NextQuestion(0)"
+    style="background-color: rgb(0, 0, 0)"
+  >
+    <div class="top">
+      <div class="home">
+        <h1>INSIDE BRAIN</h1>
+      </div>
+      <h1 class="head">
+        <strong
+          ><q
+            >let us now <br />
+            what's in your <br />
+            brain</q
+          ></strong
+        >
+      </h1>
+    </div>
+    <div class="quiz">
+      <div>
+        <!-- question box -->
+        <div class="question-box">
+          <h1 id="display-question"></h1>
+        </div>
+        <!-- question box  ends -->
+
+        <!-- answers box -->
+        <div class="answer-box">
+          <!-- box if they do not select an option -->
+          <div class="no-options-box" id="no-option-box">
+            <div class="no-option-box">
+              <h1>Please Pick An Option</h1>
+
+              <div class="continue-button">
+                <button onclick="closeNoOptionBox()">Continue</button>
+              </div>
+            </div>
+          </div>
+          <!-- box if they do not select an option ends -->
+          <span>
+            <input
+              type="radio"
+              id="option-one"
+              name="option"
+              class="radio"
+              value="optionA"
+            />
+            <label
+              for="option-one"
+              class="option"
+              id="option-one-label"
+            ></label>
+          </span>
+
+          <span>
+            <input
+              type="radio"
+              id="option-two"
+              name="option"
+              class="radio"
+              value="optionB"
+            />
+            <label
+              for="option-two"
+              class="option"
+              id="option-two-label"
+            ></label>
+          </span>
+
+          <span>
+            <input
+              type="radio"
+              id="option-three"
+              name="option"
+              class="radio"
+              value="optionC"
+            />
+            <label
+              for="option-three"
+              class="option"
+              id="option-three-label"
+            ></label>
+          </span>
+
+          <span>
+            <input
+              type="radio"
+              id="option-four"
+              name="option"
+              class="radio"
+              value="optionD"
+            />
+            <label
+              for="option-four"
+              class="option"
+              id="option-four-label"
+            ></label>
+          </span>
+        </div>
+        <!-- answers box ends -->
+        <!-- submit box -->
+        <div class="submit-button-box">
+          <button onclick="changeQuestion()">Submit</button>
+        </div>
+        <!-- submit box -->
+        <!-- score box -->
+        <div class="game-sum-box">
+          <h1>Question : <span id="question-number"></span></h1>
+          <h1>Amount won : <span id="amount-won"> </span> Rupees</h1>
+        </div>
+        <!-- score box  ends -->
+      </div>
+      <div class="rules">
+        <p class="rule">&#9760; You win 1000 rupees for each correct answer.</p>
+        <p class="rule">&#9760; You can win maximum of 10000 rupees.</p>
+        <p class="rule">
+          &#9760; If your answer is wrong you get terminated from the quiz.
+        </p>
+      </div>
+    </div>
+
+    <!-- creating a modal for when quiz ends -->
+    <div class="winings-box" id="end-box">
+      <div class="winings-details">
+        <h1>Congratulations, Game Completed.</h1>
+
+        <div class="winings">
+          <p>Amount Won : <span id="final-amount"></span> Rupees</p>
+        </div>
+        <div class="winings">
+          <p>click continue to attempt quiz again</p>
+        </div>
+        <div class="continue-button">
+          <button onclick="closeEndBox()">Continue</button>
+        </div>
+      </div>
+    </div>
+    <!-- end of modal of quiz details-->
+    <script>
+      const questions = [
+    {
+        question: "Who won the Women’s Singles title at Denmark Open tournament?",
+        optionA: "Yuki Fukushima",
+        optionB: "P.V. Sindhu",
+        optionC: "Akane Yamaguchi",
+        optionD: "Nozomi Okuhara",
+        correctOption: "optionD"
+    },
+
+    {
+        question: "Which Indian company has been announced as the title sponsor of Women’s T20 Challenge 2020?",
+        optionA: "Sahara",
+        optionB: " Airtel",
+        optionC: "Jio",
+        optionD: " Byju’s",
+        correctOption: "optionC"
+    },
+
+    {
+        question: "Sanjeet, who won the Alexis Vastine tournament, is associated with which sports?",
+        optionA: "Chess",
+        optionB: "Weight-Lifting",
+        optionC: "Boxing",
+        optionD: "Formula-1 Racing",
+        correctOption: "optionC"
+    },
+
+    {
+        question: "Which Racing Driver has won Formula One Emilia-Romagna Grand Prix Tournament?",
+        optionA: "Max Verstappen",
+        optionB: "Valtteri Bottas",
+        optionC: "Lewis Hamilton",
+        optionD: "Sebastien Vettel",
+        correctOption: "optionC"
+    },
+
+    {
+        question: "Shane Watson, who announced retirement from all forms of Cricket, belongs to which country?",
+        optionA: "South Africa",
+        optionB: "New Zealand",
+        optionC: "Australia",
+        optionD: " England",
+        correctOption: "optionC"
+    },
+
+    {
+        question: "Rutuja Bhosale, who was seen in news recently, is associated with which sports?",
+        optionA: "Hockey",
+        optionB: "Badminton",
+        optionC: "Tennis",
+        optionD: "Chess",
+        correctOption: "optionC"
+    },
+
+    {
+        question: "Which cricket team has clinched the Indian Premier League (IPL) 2020 title?",
+        optionA: "Rajasthan Royals",
+        optionB: "Sun Risers Hyderabad",
+        optionC: "Mumbai Indians",
+        optionD: "Delhi Capitals",
+        correctOption: "optionC"
+    },
+
+    {
+        question: "Which cricketer has been named the Captain of the ICC’s Men’s T20I and ODI teams of the decade?",
+        optionA: "Chris Gayle",
+        optionB: "AB de Villiers",
+        optionC: "Virat Kohli",
+        optionD: "Mahendra Singh Dhoni",
+        correctOption: "optionD"
+    },
+
+    {
+        question: "Who won the men’s singles final at badminton World Tour held in Bangkok?",
+        optionA: "Lee Chong Wei",
+        optionB: "Jan o Jorgensen",
+        optionC: "Lin Dan",
+        optionD: "Anders Antonsen",
+        correctOption: "optionD"
+    },
+
+    {
+        question: "Which cricketer is/was the first in the world to take 200 wickets against left-handed batsmen?",
+        optionA: "Shane Warne",
+        optionB: "Anil Kumble",
+        optionC: "Ravichandran Ashwin",
+        optionD: " Muthiah Muralidharan",
+        correctOption: "optionC"
+    },
+
+    {
+        question: "Which Indian wrestler has regained top spot in world ranking recently?",
+        optionA: "Yogeshwar Dutt",
+        optionB: "Sakshi Malik",
+        optionC: "Bajrang Punia",
+        optionD: "Vinesh Phogat",
+        correctOption: "optionC"
+    },
+
+    {
+        question: "Who is the first cricketer to score 3,000 runs in T-20 International matches?",
+        optionA: "Smriti Mandhana",
+        optionB: "Rohit Sharma",
+        optionC: "Mithali Raj",
+        optionD: "Virat Kohli",
+        correctOption: "optionD"
+    },
+    
+
+]
+let shuffledQuestions = [] //empty array to hold shuffled selected questions out of all available questions
+
+function handleQuestions() { 
+    //function to shuffle and push 10 questions to shuffledQuestions array
+    while (shuffledQuestions.length <= 9) {
+        const random = questions[Math.floor(Math.random() * questions.length)]
+        if (!shuffledQuestions.includes(random)) {
+            shuffledQuestions.push(random)
+        }
+    }
+}
+
+let questionNumber = 1 //holds the current question number
+let amountwon = 0  //holds the amount won
+let indexNumber = 0 //will be used in displaying next question
+let c= null //will be used to determine the option selected is correct or wrong or not selected
+
+//display next question and the values of amount won and the question number
+function NextQuestion(index) {
+    handleQuestions()
+    const currentQuestion = shuffledQuestions[index]
+    document.getElementById("question-number").innerHTML = questionNumber
+    document.getElementById("amount-won").innerHTML = amountwon * 1000
+    document.getElementById("display-question").innerHTML = currentQuestion.question;
+    document.getElementById("option-one-label").innerHTML = currentQuestion.optionA;
+    document.getElementById("option-two-label").innerHTML = currentQuestion.optionB;
+    document.getElementById("option-three-label").innerHTML = currentQuestion.optionC;
+    document.getElementById("option-four-label").innerHTML = currentQuestion.optionD;
+
+}
+
+//checks the answer
+function checkForAnswer() {
+    const currentQuestion = shuffledQuestions[indexNumber] //gets current Question 
+    const currentQuestionAnswer = currentQuestion.correctOption //gets current Question's answer
+    const options = document.getElementsByName("option"); //gets all elements in the radio inputs with name of 'option' 
+    let correctOption = null
+
+    options.forEach((option) => {
+        if (option.value === currentQuestionAnswer) {
+            //get's correct's radio input with correct answer
+            correctOption = option.labels[0].id
+        }
+    })
+
+    //checking to make sure a radio input has been checked or an option being chosen
+    if (options[0].checked === false && options[1].checked === false && options[2].checked === false && options[3].checked == false) {
+        c=2 // c becomes 2 if no option is selected
+    }
+
+    //checking if checked radio button is same as answer
+    options.forEach((option) => {
+        if (option.checked === true && option.value === currentQuestionAnswer) {
+            document.getElementById(correctOption).style.backgroundColor =  "rgb(46, 218, 152)"
+            c=1 // c becomes 1 if the option choosed is correct
+            amountwon++ //adding to amount won
+            indexNumber++ //adding 1 to index so has to display next question..
+            //it delays question number till when next question loads
+            setTimeout(() => {
+                questionNumber++
+            }, 1000)
+        }
+
+        else if (option.checked && option.value !== currentQuestionAnswer) {
+            const wronganswer = option.labels[0].id
+            document.getElementById(wronganswer).style.backgroundColor = "rgb(243, 76, 76)"
+            document.getElementById(correctOption).style.backgroundColor = "rgb(46, 218, 152)"
+            c=0 // c will remain 0  if the option choosed is wrong
+            indexNumber++
+            //it delays question number till when next question loads
+            setTimeout(() => {
+                questionNumber++
+            }, 1000)
+        }
+    })
+}
+
+//when they submit it validates 
+function changeQuestion() {
+    checkForAnswer() //check if player picked right or wrong option
+    unCheckRadioButtons()
+    //delays next question displaying 
+    setTimeout(() => {
+        //if the answer is correct it will change to next question
+        if (c==1 && indexNumber <= 9) {
+            NextQuestion(indexNumber)
+            c=0
+        }
+        //if they do not select any option it will display to select an option 
+        else if (c==2) {
+            document.getElementById('no-option-box').style.display = "flex"
+        } 
+        //if they select wrong answer it will end the game
+        else {
+            EndGame()
+        }
+        resetOptionBackground()
+    }, 1000);
+}
+
+//sets options background back to null after display the right or wrong colors
+function resetOptionBackground() {
+    const options = document.getElementsByName("option");
+    options.forEach((option) => {
+        document.getElementById(option.labels[0].id).style.backgroundColor = ""
+    })
+}
+//it will uncheck the radio buttons
+function unCheckRadioButtons() {
+    const options = document.getElementsByName("option");
+    for (let i = 0; i < options.length; i++) {
+        options[i].checked = false;
+    }
+}
+
+// ends the game if the player selects wrong option
+function EndGame() {
+    //displays the score board
+    document.getElementById('final-amount').innerHTML = amountwon *1000
+    document.getElementById('end-box').style.display = "flex"
+
+}
+
+//closes score board, resets game and reshuffles questions
+function closeEndBox() {
+    questionNumber = 1
+    amountwon = 0
+    indexNumber = 0
+    shuffledQuestions = []
+    NextQuestion(indexNumber)
+    document.getElementById('end-box').style.display = "none"
+}
+
+//function to close the no option box
+function closeNoOptionBox() {
+    document.getElementById('no-option-box').style.display = "none"
+}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,268 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+div.top {
+  width: 100%;
+  height: 500px;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  margin: 0px;
+}
+div.home {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  height: 30px;
+  width: 150px;
+  background-color: rgb(0, 255, 191);
+  color: black;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 10px;
+}
+div.home h1 {
+  font-size: small;
+  display: flex;
+  flex-wrap: wrap;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-around;
+}
+div.home:hover {
+  -ms-transform: scale(1.12);
+  -webkit-transform: scale(1.12);
+  transform: scale(1.12);
+  border-radius: 10px;
+}
+.photo {
+  position: absolute;
+  top: 60px;
+  left: 200px;
+}
+.head {
+  font-size: 60px;
+  color: rgb(0, 255, 191);
+  position: absolute;
+  left: 60%;
+  top: 15%;
+}
+div.quiz {
+  width: 100%;
+  height: 600px;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  margin: 0px;
+}
+.question-box {
+  position: absolute;
+  left: 50px;
+  top: 600px;
+  width: 600px;
+  height: 100px;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  background-color: rgb(0, 0, 0);
+  justify-content: space-around;
+  align-items: center;
+  color: rgb(0, 255, 191);
+  display: flex;
+  font-size: small;
+}
+.answer-box {
+  position: absolute;
+  left: 50px;
+  top: 730px;
+  width: 600px;
+  height: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+.answer-box span {
+  width: 200px;
+  height: 50px;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  background-color: rgb(0, 0, 0);
+  justify-content: space-around;
+  align-items: center;
+  color: rgb(0, 255, 191);
+  display: flex;
+  font-size: small;
+}
+span label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+  font-weight: 600;
+  color: rgb(0, 255, 191);
+}
+span label:hover {
+  -ms-transform: scale(1.12);
+  -webkit-transform: scale(1.12);
+  transform: scale(1.12);
+  color: white;
+  border-radius: 10px;
+}
+input[type="radio"] {
+  position: relative;
+  display: none;
+}
+input[type="radio"]:checked ~ .option {
+  color: black;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+.submit-button-box {
+  position: absolute;
+  left: 300px;
+  top: 900px;
+  width: 100px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.submit-button-box button {
+  width: 100px;
+  height: 30px;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  font-size: small;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  background-color: rgb(0, 0, 0);
+  color: rgb(0, 255, 191);
+}
+.submit-button-box button:hover {
+  -ms-transform: scale(1.12);
+  -webkit-transform: scale(1.12);
+  transform: scale(1.12);
+  background-color: rgb(88, 80, 80);
+}
+div.game-sum-box {
+  position: absolute;
+  right: 150px;
+  top: 650px;
+  width: 300px;
+  height: 100px;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  color: aliceblue;
+  align-items: center;
+  display: block;
+}
+div.game-sum-box h1 {
+  font-size: 20px;
+  color: rgb(0, 255, 191);
+  text-align: center;
+}
+.winings-box {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(48, 41, 41);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  -webkit-animation: fadeIn 1.2s ease-in-out;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+.winings-details {
+  height: 20rem;
+  width: 25rem;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 25px;
+}
+
+.winings-details h1 {
+  font-size: 1.3rem;
+  height: 10px;
+  color: rgb(0, 255, 191);
+  text-align: center;
+}
+.continue-button {
+  height: 2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.continue-button button {
+  width: 10rem;
+  height: 2rem;
+  background: none;
+  outline: none;
+  border: 1px solid rgb(252, 242, 241);
+  color: rgb(0, 255, 191);
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.continue-button button:hover {
+  background-color: rgb(83, 82, 82);
+}
+.winings {
+  color: rgb(0, 255, 191);
+}
+.no-options-box {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  -webkit-animation: fadeIn 1.2s ease-in-out;
+  animation: fadeIn 1.2s ease-in-out;
+}
+.no-option-box {
+  height: 320px;
+  width: 400px;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 25px;
+}
+.no-option-box h1 {
+  font-size: 20px;
+  height: 10px;
+  color: rgb(0, 255, 191);
+  text-align: center;
+}
+div.rules {
+  background-color: rgb(0, 0, 0);
+  position: absolute;
+  top: 950px;
+  left: 100px;
+}
+.rule {
+  font-size: 15px;
+  height: 5px;
+  color: rgb(0, 255, 191);
+}
